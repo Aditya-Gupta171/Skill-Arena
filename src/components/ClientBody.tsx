@@ -15,12 +15,15 @@ export default function ClientBody({
     setMounted(true);
     
     // Remove the VSCode-specific class that causes hydration mismatch
-    document.body.classList.remove('vsc-initialized');
+    const body = document.querySelector('body');
+    if (body && body.classList.contains('vsc-initialized')) {
+      body.classList.remove('vsc-initialized');
+    }
   }, []);
 
-  if (!mounted) {
-    return <body className={className}>{children}</body>;
-  }
-
-  return <body className={className}>{children}</body>;
+  return (
+    <body className={className} suppressHydrationWarning>
+      {children}
+    </body>
+  );
 }

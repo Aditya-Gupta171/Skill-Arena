@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { gsap } from 'gsap';
+import { motion } from "framer-motion";
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,9 +45,18 @@ export default function Nav() {
         </nav>
         
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm">
-            Log In
-          </Button>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-[#9D7E5D] text-[#9D7E5D] hover:bg-[#513C29] hover:text-white font-medium px-6"
+            >
+              Log In
+            </Button>
+          </motion.div>
         </div>
       </div>
     </div>
