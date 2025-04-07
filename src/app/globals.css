@@ -166,45 +166,52 @@ footer a.hover\:text-primary:hover {
 /* ======== CLEAN BUTTON TEXT COLOR FIX ======== */
 /* This section fixes all button text colors on hover */
 
-/* Set all buttons to have white text on brown background hover */
+/* Set buttons to have black text by default */
+button,
+button *,
+a button {
+  color: #3A2E25 !important; /* Black text */
+}
+
+/* Set all buttons to have white text on dark brown background hover */
 button:hover,
 button:hover *,
 a:hover button,
 button:hover a,
 [data-radix-slot-name="root"]:hover {
-  color: #F5F0EA !important;
+  background-color: #513C29 !important; /* Dark brown */
+  color: #FFFFFF !important; /* White text */
 }
 
-/* Force white text on brown background for extra certainty */
+/* Remove the beige hover color override */
 .hover\:bg-\[\#513C29\]:hover,
-.hover\:bg-\[\#513C29\]:hover *,
-button.hover\:bg-\[\#513C29\]:hover,
-a button.hover\:bg-\[\#513C29\]:hover {
-  color: #F5F0EA !important;
+.hover\:bg-\[\#513C29\]:hover * {
+  background-color: #513C29 !important; /* Dark brown */
+  color: #FFFFFF !important; /* White text */
 }
 
-/* Fix for browse-all-button */
-.btn-motion-wrapper:hover button {
-  color: #F5F0EA !important;
+/* Tab triggers should have black text */
+[role="tab"] {
+  color: #3A2E25 !important; /* Black text for all tabs */
 }
 
-/* Fix for outline buttons */
-button[class*="outline"]:hover,
-a:hover button[class*="outline"] {
-  color: #F5F0EA !important;
+/* Active tab should still be black */
+[role="tab"][data-state="active"] {
+  color: #3A2E25 !important; /* Black text for active tab */
+  font-weight: 500; /* Make it slightly bolder */
 }
 
-/* Fix for "View Free Lessons" button specifically */
-a[href="/free-content"] button:hover {
-  color: #F5F0EA !important;
+/* Hover state for tabs */
+[role="tab"]:hover:not([data-state="active"]) {
+  background-color: #F2EDE7 !important; /* Light beige */
+  color: #3A2E25 !important; /* Keep black text */
 }
 
-/* Fix for course cards */
-.course-card button:hover {
-  color: #F5F0EA !important;
-}
+/* Add this CSS rule below your existing button styling */
 
-/* Only for link variant buttons - keep brown */
-button.hover\:text-\[\#513C29\]:hover:not(.hover\:bg-\[\#513C29\]) {
-  color: #513C29 !important;
+/* Specific override for course creation tabs */
+.dashboard-tabs [role="tab"],
+.dashboard-tabs [role="tab"][data-state="active"] {
+  color: #3A2E25 !important;
+  font-weight: 500;
 }
